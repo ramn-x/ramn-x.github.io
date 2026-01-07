@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Raman Kumar | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    /* ===== BASIC RESET ===== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      background: #0f172a;
+      color: #e5e7eb;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ===== LAYOUT ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(15, 23, 42, 0.8);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      color: #38bdf8;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.1rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(to right, #38bdf8, #a855f7);
+      transition: width 0.2s ease-out;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    section {
+      padding: 4rem 0;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-weight: 700;
+      color: #f9fafb;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      position: relative;
+    }
+
+    h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.4rem;
+      width: 40%;
+      height: 3px;
+      background: linear-gradient(to right, #38bdf8, #a855f7);
+      border-radius: 999px;
+    }
+
+    p {
+      color: #cbd5f5;
+      max-width: 680px;
+      font-size: 0.98rem;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      gap: 3rem;
+      align-items: center;
+      padding-top: 3rem;
+    }
+
+    .hero-tag {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #a5b4fc;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-name {
+      background: linear-gradient(to right, #38bdf8, #a855f7);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+      color: #e5e7eb;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 0.7rem 1.4rem;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.16s ease-out, box-shadow 0.16s ease-out, background 0.16s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(to right, #38bdf8, #a855f7);
+      box-shadow: 0 18px 40px rgba(56, 189, 248, 0.25);
+      color: #0b1020;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 55px rgba(56, 189, 248, 0.25);
+    }
+
+    .btn-ghost {
+      border-color: rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.7);
+      color: #e5e7eb;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(30, 64, 175, 0.5);
+      transform: translateY(-1px);
+    }
+
+    .hero-meta {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      color: #9ca3af;
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .hero-avatar-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-avatar {
+      width: 230px;
+      height: 230px;
+      border-radius: 999px;
+      border: 3px solid rgba(148, 163, 184, 0.7);
+      padding: 5px;
+      background: radial-gradient(circle at 0 0, #38bdf8, transparent 55%),
+        radial-gradient(circle at 100% 0, #a855f7, transparent 55%),
+        radial-gradient(circle at 50% 100%, #22c55e, transparent 55%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.95);
+    }
+
+    .hero-avatar-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: #020617;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #e5e7eb;
+    }
+
+    /* ===== GRID / CARDS ===== */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.15), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.18), transparent 55%),
+        #020617;
+      padding: 1.4rem;
+      border-radius: 1.2rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.85);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: transform 0.16s ease-out, box-shadow 0.16s ease-out, border-color 0.16s ease-out;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 25px 55px rgba(15, 23, 42, 0.95);
+      border-color: rgba(56, 189, 248, 0.7);
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .card-meta {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #94a3b8;
+    }
+
+    .tag-list {
+      margin-top: 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.1rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.8);
+      color: #d1d5db;
+    }
+
+    /* ===== SKILLS ===== */
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.8rem;
+    }
+
+    .skill-pill {
+      font-size: 0.8rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      margin-top: 1rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 1.4rem;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 0.35rem;
+      top: 0.2rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #38bdf8;
+    }
+
+    .timeline-item::after {
+      content: "";
+      position: absolute;
+      left: 0.7rem;
+      top: 0.9rem;
+      bottom: -0.9rem;
+      width: 1px;
+      background: rgba(148, 163, 184, 0.5);
+    }
+
+    .timeline-item:last-of-type::after {
+      display: none;
+    }
+
+    .timeline-title {
+      font-size: 0.98rem;
+      color: #e5e7eb;
+    }
+
+    .timeline-meta {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-bottom: 0.2rem;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 1.8rem;
+      align-items: flex-start;
+    }
+
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      font-size: 0.9rem;
+    }
+
+    .contact-item span {
+      font-weight: 500;
+      color: #e5e7eb;
+    }
+
+    form {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    label {
+      font-size: 0.8rem;
+      color: #cbd5f5;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border-radius: 0.7rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      color: #e5e7eb;
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.5);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.8rem 1rem 2.2rem;
+      font-size: 0.8rem;
+      color: #9ca3af;
+      border-top: 1px solid rgba(148, 163, 184, 0.2);
+      background: #020617;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        text-align: left;
+      }
+
+      .hero-avatar-wrap {
+        order: -1;
+        justify-content: flex-start;
+      }
+
+      .hero-avatar {
+        width: 190px;
+        height: 190px;
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .contact-grid,
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+
+      .nav-links {
+        font-size: 0.85rem;
+        gap: 1rem;
+      }
+
+      .hero h1 {
+        font-size: 2.1rem;
+      }
+
+      main {
+        padding: 1.4rem 1.1rem 3rem;
+      }
+
+      section {
+        padding: 3rem 0;
+      }
+
+      .grid-3 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header>
+    <div class="nav">
+      <div class="logo">RAMAN KUMAR</div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="top">
+      <div>
+        <div class="hero-tag">PORTFOLIO</div>
+        <h1>
+          Hi, I'm <span class="hero-name">RAMAN KUMAR</span>.<br />
+          <span>JAVA FULL STACK DEVELOPER</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Java Full Stack Developer with strong skills in Java, Spring Boot, SQL, React, and backend systems.
+          I enjoy solving real-world problems and building clean, scalable applications.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary">View My Work</a>
+          <a href="#contact" class="btn-ghost">Contact Me</a>
+        </div>
+
+        <div class="hero-meta" style="margin-top: 1.5rem;">
+          <span>📍 Bihar, India </span>
+          <span>💼 Open to opportunities</span>
+        </div>
+      </div>
+
+      <div class="hero-avatar">
+        <div class="hero-avatar-inner">RK</div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        I am Raman Kumar, a Java Full Stack Developer skilled in Java, Spring Boot, SQL, JavaScript,
+        and frontend development. I love building applications that create real impact and automate
+        complex tasks. Currently, I am focused on backend development and AI-based automation projects.
+      </p>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="grid-2">
+        <div>
+          <h3>Technical</h3>
+          <div class="skills-wrap">
+            <span class="skill-pill">Java</span>
+            <span class="skill-pill">JavaScript</span>
+            <span class="skill-pill">HTML</span>
+            <span class="skill-pill">CSS</span>
+            <span class="skill-pill">React</span>
+            <span class="skill-pill">SQL</span>
+            <span class="skill-pill">SpringBoot</span>
+            <span class="skill-pill">JDBC</span>
+            <span class="skill-pill">Hibernate</span>
+          </div>
+        </div>
+
+        <div>
+          <h3>Soft Skills</h3>
+          <div class="skills-wrap">
+            <span class="skill-pill">Problem Solving</span>
+            <span class="skill-pill">Teamwork</span>
+            <span class="skill-pill">Time Management</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid-3">
+
+        <!-- PROJECT 1 -->
+        <article class="card">
+          <div class="card-meta">FEATURED PROJECT</div>
+          <h3>Student Management System</h3>
+          <p>
+            CRUD-Based Student Record Management System built using Java, OOP principles,
+            CSV/File handling. Includes add, update, delete, and search functionality.
+          </p>
+          <div class="tag-list">
+            <span class="tag">Java</span>
+            <span class="tag">OOP</span>
+            <span class="tag">CSV</span>
+          </div>
+          <div class="hero-actions" style="margin-top: 0.7rem;">
+            <a href="https://github.com/R97085/student-record-manager" class="btn-ghost">Source Code</a>
+          </div>
+        </article>
+
+        <!-- PROJECT 2 -->
+        <article class="card">
+          <div class="card-meta">PROJECT</div>
+          <h3>AI-Powered Academic Timetable Scheduler</h3>
+          <p>
+            Automated timetable generator with workload balancing, conflict reduction,
+            and SQL-based ML-driven optimization.
+          </p>
+          <div class="tag-list">
+            <span class="tag">AI</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Java</span>
+          </div>
+          <div class="hero-actions" style="margin-top: 0.7rem;">
+            <a href="#" class="btn-ghost">Source Code</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===== EDUCATION ===== -->
+    <section id="education">
+      <h2>Education</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-meta">Bachelor of Computer Science & Engineering — CGPA: 7.6 (2024)</div>
+          <div class="timeline-title">Radha Raman Institute of Technology and Science</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">Higher Secondary School Examination (12th) — 66%</div>
+          <div class="timeline-title">JN Mahavidyaley</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">Secondary School Examination (10th) — 8.6 CGPA</div>
+          <div class="timeline-title">MGSS Darbhanga</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-grid">
+
+        <div>
+          <p>
+            Feel free to reach out for job opportunities, collaboration, or project discussions.
+          </p>
+
+          <div class="contact-list" style="margin-top: 1.2rem;">
+            <div class="contact-item"><span>Email:</span> ramangupta08307@gmail.com</div>
+            <div class="contact-item"><span>Phone:</span> +91-9708562921</div>
+            <div class="contact-item"><span>LinkedIn:</span> <a href="https://www.linkedin.com/in/raman-kumar-1620bb242/">www.linkedin.com/in/raman-kumar-1620bb242/</a></div>
+            <div class="contact-item"><span>GitHub:</span> <a href="https://github.com/R97085">github.com/R97085</a></div>
+          </div>
+        </div>
+
+        <div>
+          <form id="contact">
+            <label>Name</label>
+            <input type="text" name="name" value="" placeholder="Your name" id="name" />
+
+            <label>Email</label>
+            <input type="email" name="email" placeholder="your@email.com" id="email" />
+
+            <label>Message</label>
+            <textarea placeholder="Write your message..." name="message" id="message"></textarea>
+
+            <button type="submit" class="btn-primary" style="border:none;">Send Message</button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+  </main>
+  <script>
+    let form = document.getElementById('contact');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      let name = document.getElementById('name').value;
+      let email = document.getElementById('email').value;
+      let message = document.getElementById('message').value;
+
+
+      try {
+        let url = "http://localhost:8080/api/user"
+        let response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            "id": 90,
+            "name": name,
+            "email": email,
+            "password": "jhjjkhjhh",
+            "about": message
+          })
+        });
+
+        if (!response.ok) {
+          alert('Failed to submit! Please try again')
+        }
+
+        if (response.status == 201) {
+
+          alert("Your data is submitted!")
+          form.reset();
+        }
+        // console.log(await response);
+
+
+      } catch (error) {
+        alert('Someting went wrong on server side.');
+      }
+    })
+
+
+  </script>
+  <footer>
+    © <span id="year"></span> Raman Kumar. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+
+</html>
